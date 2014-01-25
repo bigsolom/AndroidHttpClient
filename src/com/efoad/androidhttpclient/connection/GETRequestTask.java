@@ -3,11 +3,11 @@ package com.efoad.androidhttpclient.connection;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.efoad.androidhttpclient.data.RequestData;
 
@@ -26,8 +26,8 @@ public class GETRequestTask extends RequestTask{
 		for (String key : keySet) {
 			paramsStrings[i++] = key+"="+requestParams.get(key);
 		}
-		String joinParams = StringUtils.join(paramsStrings, "&");
-		HttpGet httpget = new HttpGet(params[0].getUrl()+(StringUtils.isEmpty(joinParams)?"":"?"+joinParams));
+		String joinParams = TextUtils.join("&", paramsStrings);
+		HttpGet httpget = new HttpGet(params[0].getUrl()+(TextUtils.isEmpty(joinParams)?"":"?"+joinParams));
 		return httpget;
 	}
 
