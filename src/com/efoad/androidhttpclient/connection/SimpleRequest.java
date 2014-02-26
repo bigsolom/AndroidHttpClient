@@ -22,7 +22,7 @@ public abstract class SimpleRequest {
 		this.requestType  = requestType;
 	}
 
-	public void doRequest(String URL, Map<String,String> parameters, Handler handler) {
+	public void doRequest(String URL, Map<String,? extends Object> parameters, Handler handler) {
 			RequestData request = new RequestData();
 			request.setUrl(URL);
 			request.setParameters(parameters);

@@ -19,12 +19,12 @@ public class GETRequestTask extends RequestTask{
 
 	@Override
 	protected HttpUriRequest getHttpRequest(RequestData[] params) {
-		Map<String, String> requestParams = params[0].getParameters();
+		Map<String, ? extends Object> requestParams = params[0].getParameters();
 		Set<String> keySet = requestParams.keySet();
 		String[] paramsStrings = new String[keySet.size()];
 		int i=0;
 		for (String key : keySet) {
-			paramsStrings[i++] = key+"="+requestParams.get(key);
+			paramsStrings[i++] = key+"="+requestParams.get(key).toString();
 		}
 		String joinParams = TextUtils.join("&", paramsStrings);
 		HttpGet httpget = new HttpGet(params[0].getUrl()+(TextUtils.isEmpty(joinParams)?"":"?"+joinParams));

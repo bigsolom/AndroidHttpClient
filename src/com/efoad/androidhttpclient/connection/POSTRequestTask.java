@@ -31,7 +31,7 @@ public class POSTRequestTask extends RequestTask{
 					Set<String> keySet = params[0].getParameters().keySet();
 					for (String key : keySet) {
 						nameValuePairs.add(new BasicNameValuePair(key, params[0]
-								.getParameters().get(key)));
+								.getParameters().get(key).toString()));
 						
 					}
 					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,HTTP.UTF_8));
